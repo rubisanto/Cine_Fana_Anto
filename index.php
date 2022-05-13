@@ -16,6 +16,8 @@ require_once "controllers/MovieController.php";
 require_once "controllers/SearchController.php";
 
 // Verification cookie
+
+// Il faut crypter l'adresse mail et le password 
 if (isset($_COOKIE["mail"]) && isset($_COOKIE["password"])) {
   $mail = htmlspecialchars($_COOKIE["mail"]);
   $password = htmlspecialchars($_COOKIE["password"]);
@@ -55,13 +57,13 @@ if (isset($_GET["page"])) {
     getCatalogue();
   }
 } elseif (isset($_GET["article"])) {
-    if ($_GET["article"] == $articleID) {
-      getSingleArticle($articleID);
-    }
+  if ($_GET["article"] == $articleID) {
+    getSingleArticle($articleID);
+  }
 } elseif (isset($_GET["post"])) {
-    if ($_GET["post"] == $postID) {
-      getSinglePost($postID);
-    }
+  if ($_GET["post"] == $postID) {
+    getSinglePost($postID);
+  }
 } elseif (isset($_GET["movie"])) {
   getSingleMovie();
 } elseif (isset($_GET["search"])) {
@@ -71,4 +73,3 @@ if (isset($_GET["page"])) {
 } else {
   getHome();
 }
-
