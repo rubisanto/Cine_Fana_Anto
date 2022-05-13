@@ -1,0 +1,2 @@
+# Redirige sur la page 404 si la page n'existe pas
+ErrorDocument 404 /Cine_Fana/views/404.php
