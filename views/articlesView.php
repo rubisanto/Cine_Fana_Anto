@@ -8,7 +8,7 @@ ob_start();
 <!-- Contenu html -->
 <?php while ($result = $articles->fetch()) { ?>
   <div class="card flex-row mt-5 text-white border-0">
-    <img src="img.png" class="card-img mx-auto rounded-0 d-none d-sm-none d-md-none d-lg-block" style="height:auto; width:auto">
+    <img src="img/img.png" class="card-img mx-auto rounded-0 d-none d-sm-none d-md-none d-lg-block" style="height:auto; width:auto">
     <div class="card-body bg-dark">
       <h4 class="card-title"><?= $result["article_title"] ?></h4>
       <h5>Ecrit le <?= date("d-m-Y", strtotime($result["article_date"])) ?> par <?= $result["article_author"] ?></h5>
