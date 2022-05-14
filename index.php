@@ -14,10 +14,9 @@ require_once "controllers/ContactController.php";
 require_once "controllers/CatalogueController.php";
 require_once "controllers/MovieController.php";
 require_once "controllers/SearchController.php";
+require_once "controllers/CrudController.php";
 
 // Verification cookie
-
-// Il faut crypter l'adresse mail et le password 
 if (isset($_COOKIE["mail"]) && isset($_COOKIE["password"])) {
   $mail = htmlspecialchars($_COOKIE["mail"]);
   $password = htmlspecialchars($_COOKIE["password"]);
@@ -33,6 +32,9 @@ if (isset($_GET["post"])) {
 }
 if (isset($_GET["search"])) {
   $search = htmlspecialchars($_GET["search"]);
+}
+if (isset($_GET["table"])) {
+  $tableName = htmlspecialchars($_GET["table"]);
 }
 
 // Routeur
@@ -55,6 +57,28 @@ if (isset($_GET["page"])) {
     getContact();
   } elseif ($_GET["page"] == "catalogue") {
     getCatalogue();
+  } elseif ($_GET["page"] == "crud") {
+    getCrud();
+  } else {
+    header("Location: index.php");
+  }
+} elseif (isset($_GET["table"])) {
+  if ($_GET["table"] == "admins") {
+    getAdminsTable();
+  } elseif ($_GET["table"] == "articles") {
+    getArticlesTable();
+  } elseif ($_GET["table"] == "comments") {
+    getCommentsTable();
+  } elseif ($_GET["table"] == "contacts") {
+    getContactsTable();
+  } elseif ($_GET["table"] == "forum") {
+    getForumTable();
+  } elseif ($_GET["table"] == "products") {
+    getProductsTable();
+  } elseif ($_GET["table"] == "users") {
+    getUsersTable();
+  } else {
+    header("Location: index.php");
   }
 } elseif (isset($_GET["article"])) {
   if ($_GET["article"] == $articleID) {
