@@ -10,6 +10,7 @@ if (isset($_SESSION["connect"]) == true) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,63 +27,52 @@ if (isset($_SESSION["connect"]) == true) {
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="styles/<?= $css ?>">
   <!-- JS -->
-  <script src="scripts/<?=$js?>" defer></script>
+  <script src="scripts/<?= $js ?>" defer></script>
 </head>
+
 <body>
-<header class="container-fluid p-0 sticky-top">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php">Cine Fana</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?page=catalogue">Catalogue</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?page=articles">Articles</a>
-        </li>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?page=forum">Forum</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0" method="get">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          name="search"
-          id="search"
-        />
-        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" id="btnsearch">
-          Search
-        </button>
-      </form>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="<?= $href ?>"><?= $connect ?></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Panier</a>
-        </li>
+  <header class="container-fluid p-0 sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.php">Cine Fana</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=catalogue">Catalogue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=articles">Articles</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=forum">Forum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=crud">CRUD</a>
+          </li>
         </ul>
-    </div>
-  </nav>
-</header>
+        <form class="form-inline my-2 my-lg-0" method="get">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" />
+          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" id="btnsearch">
+            Search
+          </button>
+        </form>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="<?= $href ?>"><?= $connect ?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Panier</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
   <main class="container">
     <!-- Affiche le contenu du tempon -->
     <?= $content ?>
@@ -117,4 +107,5 @@ if (isset($_SESSION["connect"]) == true) {
     </div>
   </footer>
 </body>
+
 </html>

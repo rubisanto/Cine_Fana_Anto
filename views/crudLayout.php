@@ -29,7 +29,9 @@
 
 <body>
     <main class="container">
-        <?= $content ?>
+        <div class="table-responsive">
+            <?= $content ?>
+        </div>
     </main>
 </body>
 

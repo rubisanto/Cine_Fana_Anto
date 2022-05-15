@@ -36,6 +36,27 @@ if (isset($_GET["search"])) {
 if (isset($_GET["table"])) {
   $tableName = htmlspecialchars($_GET["table"]);
 }
+if (isset($_GET["delete_admin"])) {
+  $delete = htmlspecialchars($_GET["delete_admin"]);
+}
+if (isset($_GET["delete_article"])) {
+  $delete = htmlspecialchars($_GET["delete_article"]);
+}
+if (isset($_GET["delete_comment"])) {
+  $delete = htmlspecialchars($_GET["delete_comment"]);
+}
+if (isset($_GET["delete_contact"])) {
+  $delete = htmlspecialchars($_GET["delete_contact"]);
+}
+if (isset($_GET["delete_forum"])) {
+  $delete = htmlspecialchars($_GET["delete_forum"]);
+}
+if (isset($_GET["delete_product"])) {
+  $delete = htmlspecialchars($_GET["delete_product"]);
+}
+if (isset($_GET["delete_user"])) {
+  $delete = htmlspecialchars($_GET["delete_user"]);
+}
 
 // Routeur
 if (isset($_GET["page"])) {
@@ -94,6 +115,20 @@ if (isset($_GET["page"])) {
   if ($_GET["search"] == $search) {
     getSearch($search);
   }
+} elseif (isset($_GET["delete_admin"])) {
+  deleteAdminsTable($delete);
+} elseif (isset($_GET["delete_article"])) {
+  deleteArticlesTable($delete);
+} elseif (isset($_GET["delete_comment"])) {
+  deleteCommentsTable($delete);
+} elseif (isset($_GET["delete_contact"])) {
+  deleteContactsTable($delete);
+} elseif (isset($_GET["delete_forum"])) {
+  deleteForumTable($delete);
+} elseif (isset($_GET["delete_product"])) {
+  deleteProductsTable($delete);
+} elseif (isset($_GET["delete_user"])) {
+  deleteUsersTable($delete);
 } else {
   getHome();
 }

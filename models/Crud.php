@@ -54,4 +54,53 @@ class Crud extends Database
         $request = $database->query("SELECT * FROM users");
         return $request;
     }
+    public function sqlDeleteAdminsTable($delete)
+    {
+        $database = $this->connectionDatabase();
+        $request = $database->prepare("DELETE FROM admins WHERE admin_id = ?");
+        $request->execute(array($delete));
+        return $request;
+    }
+    public function sqlDeleteArticlesTable($delete)
+    {
+        $database = $this->connectionDatabase();
+        $request = $database->prepare("DELETE FROM articles WHERE article_id = ?");
+        $request->execute(array($delete));
+        return $request;
+    }
+    public function sqlDeleteCommentsTable($delete)
+    {
+        $database = $this->connectionDatabase();
+        $request = $database->prepare("DELETE FROM comments WHERE comment_id = ?");
+        $request->execute(array($delete));
+        return $request;
+    }
+    public function sqlDeleteContactsTable($delete)
+    {
+        $database = $this->connectionDatabase();
+        $request = $database->prepare("DELETE FROM contacts WHERE contact_id = ?");
+        $request->execute(array($delete));
+        return $request;
+    }
+    public function sqlDeleteForumTable($delete)
+    {
+        $database = $this->connectionDatabase();
+        $request = $database->prepare("DELETE FROM forum WHERE post_id = ?");
+        $request->execute(array($delete));
+        return $request;
+    }
+    public function sqlDeleteProductsTable($delete)
+    {
+        $database = $this->connectionDatabase();
+        $request = $database->prepare("DELETE FROM products WHERE product_id = ?");
+        $request->execute(array($delete));
+        return $request;
+    }
+    public function sqlDeleteUsersTable($delete)
+    {
+        $database = $this->connectionDatabase();
+        $request = $database->prepare("DELETE FROM users WHERE `user_id` = ?");
+        $request->execute(array($delete));
+        return $request;
+    }
 }
