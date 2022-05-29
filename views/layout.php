@@ -2,10 +2,10 @@
 // Change la nav dynamiquement avec la session
 if (isset($_SESSION["connect"]) == true) {
   $href = "?page=logout";
-  $connect = "Deconnection";
+  $connect = "Deconnexion";
 } else {
   $href = "?page=login";
-  $connect = "Connection / Inscription";
+  $connect = "Connexion / Inscription";
 }
 ?>
 <!DOCTYPE html>
@@ -28,6 +28,7 @@ if (isset($_SESSION["connect"]) == true) {
   <link rel="stylesheet" href="styles/<?= $css ?>">
   <!-- JS -->
   <script src="scripts/<?= $js ?>" defer></script>
+  <script src="scripts/darkMode.js" defer></script>
 </head>
 
 <body>
@@ -55,6 +56,9 @@ if (isset($_SESSION["connect"]) == true) {
           <li class="nav-item">
             <a class="nav-link" href="?page=crud">CRUD</a>
           </li>
+
+
+
         </ul>
         <form class="form-inline my-2 my-lg-0" method="get">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" />
@@ -66,14 +70,15 @@ if (isset($_SESSION["connect"]) == true) {
           <li class="nav-item">
             <a class="nav-link" href="<?= $href ?>"><?= $connect ?></a>
           </li>
+          <!-- bouton thème sombre -->
           <li class="nav-item">
-            <a class="nav-link" href="#">Panier</a>
+            <button id="mode" class="nav-link btn btn-dark mb-2">Thème sombre</button>
           </li>
         </ul>
       </div>
     </nav>
   </header>
-  <main class="container">
+  <main class="container main bg-light">
     <!-- Affiche le contenu du tempon -->
     <?= $content ?>
   </main>

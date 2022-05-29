@@ -2,6 +2,28 @@ p {
   font-size: 24px;
 }
 
+/*  
+ button #mode {
+   background-color: black !important;
+  margin-left: 10px;
+  border: 1px;
+  border-radius: 15px;
+  padding: 15px;
+  cursor: pointer;
+} */
+
+.dark {
+  background-color: #112f41;
+  color: #ffffff;
+}
+
+.dark button {
+  background: #144098;
+  color: #fff;
+}  
+
+
+/* Responsive part */
 @media screen and (max-width: 768px) {
   p {
     font-size: 16px;
