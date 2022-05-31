@@ -13,7 +13,7 @@ ob_start();
     <?php while ($result = $tables->fetch()) { ?>
         <div class="col mt-5">
             <div class="card text-center">
-                <img src="img/img.png" class="card-img-top" alt="...">
+                <img src="img/img.png" class="card-img-top" alt="image d'illustration du CRUD">
                 <div class="card-body">
                     <h5 class="card-title"><?= $result["Tables_in_cine_fana"] ?></h5>
                     <a href="?table=<?= $result["Tables_in_cine_fana"] ?>" class="btn btn-warning">Acceder a la table</a>
