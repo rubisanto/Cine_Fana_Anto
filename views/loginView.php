@@ -6,8 +6,7 @@ $css = "login.css";
 ob_start();
 ?>
 <!-- Contenu html -->
-<h1>Bonjour je suis la page pour se connecter</h1>
-<form method="POST">
+<form action="" method="POST" class="mt-5">
   <div class="form-group">
     <label for="mail">Adresse mail</label>
     <input type="email" class="form-control" id="mail" name="mail" required>
@@ -16,13 +15,15 @@ ob_start();
     <label for="password">Mot de passe</label>
     <input type="password" class="form-control" id="password" name="password" required>
   </div>
+  <!-- Mauvaise methode cookies
   <div class="form-group">
     <label for="stay_connect">Rester connecter ?</label>
     <input type="checkbox" name="stay_connect" id="stay_connect" value="yes">
   </div>
+  -->
   <button type="submit" class="btn btn-warning">Se connecter</button>
 </form>
-<h2>Vous n'avez pas de compte ? Inscrivez vous <a href="?page=inscription" class="text-warning">ici !</a></h2>
+<h2 class="mt-5">Vous n'avez pas de compte ? Inscrivez vous <a href="?page=inscription" class="text-warning">ici !</a></h2>
 <!-- Fin contenu html -->
 <?php
 // Stock le contenu du tempon puis le clean
