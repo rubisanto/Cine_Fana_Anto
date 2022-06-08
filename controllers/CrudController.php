@@ -9,13 +9,6 @@ function getCrud()
     require_once "views/crudView.php";
 }
 
-function getAdminsTable()
-{
-    $crud = new Crud();
-    $admins = $crud->showAdmins();
-    require_once "views/crudAdminsView.php";
-}
-
 function getArticlesTable()
 {
     $crud = new Crud();
@@ -44,25 +37,11 @@ function getForumTable()
     require_once "views/crudForumView.php";
 }
 
-function getProductsTable()
-{
-    $crud = new Crud();
-    $products = $crud->showProducts();
-    require_once "views/crudProductsView.php";
-}
-
 function getUsersTable()
 {
     $crud = new Crud();
     $users = $crud->showUsers();
     require_once "views/crudUsersView.php";
-}
-
-function deleteAdminsTable($delete)
-{
-    $crud = new Crud();
-    $delete = $crud->sqlDeleteAdminsTable($delete);
-    header("Location: index.php?table=admins");
 }
 
 function deleteArticlesTable($delete)
@@ -91,13 +70,6 @@ function deleteForumTable($delete)
     $crud = new Crud();
     $delete = $crud->sqlDeleteForumTable($delete);
     header("Location: index.php?table=forum");
-}
-
-function deleteProductsTable($delete)
-{
-    $crud = new Crud();
-    $delete = $crud->sqlDeleteProductsTable($delete);
-    header("Location: index.php?table=products");
 }
 
 function deleteUsersTable($delete)

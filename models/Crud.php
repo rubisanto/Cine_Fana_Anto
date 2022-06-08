@@ -12,12 +12,6 @@ class Crud extends Database
         $request = $database->query("SHOW TABLES");
         return $request;
     }
-    public function showAdmins()
-    {
-        $database = $this->connectionDatabase();
-        $request = $database->query("SELECT * FROM admins");
-        return $request;
-    }
     public function showArticles()
     {
         $database = $this->connectionDatabase();
@@ -42,23 +36,10 @@ class Crud extends Database
         $request = $database->query("SELECT * FROM forum");
         return $request;
     }
-    public function showProducts()
-    {
-        $database = $this->connectionDatabase();
-        $request = $database->query("SELECT * FROM products");
-        return $request;
-    }
     public function showUsers()
     {
         $database = $this->connectionDatabase();
         $request = $database->query("SELECT * FROM users");
-        return $request;
-    }
-    public function sqlDeleteAdminsTable($delete)
-    {
-        $database = $this->connectionDatabase();
-        $request = $database->prepare("DELETE FROM admins WHERE admin_id = ?");
-        $request->execute(array($delete));
         return $request;
     }
     public function sqlDeleteArticlesTable($delete)
@@ -86,13 +67,6 @@ class Crud extends Database
     {
         $database = $this->connectionDatabase();
         $request = $database->prepare("DELETE FROM forum WHERE post_id = ?");
-        $request->execute(array($delete));
-        return $request;
-    }
-    public function sqlDeleteProductsTable($delete)
-    {
-        $database = $this->connectionDatabase();
-        $request = $database->prepare("DELETE FROM products WHERE product_id = ?");
         $request->execute(array($delete));
         return $request;
     }
