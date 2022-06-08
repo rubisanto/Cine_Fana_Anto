@@ -1,4 +1,7 @@
 <?php
+if ($_SESSION["admin"] == false) {
+    header("Location: index.php");
+}
 // Changement dynamique du header
 $title = "CRUD";
 $css = "crud.css";
@@ -11,9 +14,9 @@ ob_start();
 <!-- Contenu html -->
 <div class="row row-cols-md-2">
     <?php while ($result = $tables->fetch()) { ?>
-        <div class="col mt-5">
+        <div class="col-12 mt-5">
             <div class="card text-center">
-                <img src="img/img.png" class="card-img-top" alt="image d'illustration du CRUD">
+                <img src="img/data.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><?= $result["Tables_in_cine_fana"] ?></h5>
                     <a href="?table=<?= $result["Tables_in_cine_fana"] ?>" class="btn btn-warning">Acceder a la table</a>

@@ -53,9 +53,11 @@ if (isset($_SESSION["connect"]) == true) {
           <li class="nav-item">
             <a class="nav-link" href="?page=forum">Forum</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="?page=crud">CRUD</a>
-          </li>
+          <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) { ?>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=crud">CRUD</a>
+            </li>
+          <?php } ?>
 
 
 
@@ -67,13 +69,19 @@ if (isset($_SESSION["connect"]) == true) {
           </button>
         </form>
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="<?= $href ?>"><?= $connect ?></a>
-          </li>
-          <!-- bouton thème sombre -->
-          <li class="nav-item">
-            <button id="mode" class="nav-link btn btn-dark mb-2">Thème sombre</button>
-          </li>
+          <?php if (isset($_SESSION["admin"])) { ?>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=logout">Deconnexion</a>
+            </li>
+          <?php } else { ?>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=login">Connexion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=inscription"> Inscription </a>
+            </li>
+          <?php } ?>
+
         </ul>
       </div>
     </nav>

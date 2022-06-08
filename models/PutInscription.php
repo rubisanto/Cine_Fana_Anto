@@ -23,16 +23,14 @@ class PutInscription extends Database
     $request = $database->prepare("INSERT INTO users (user_first_name, user_last_name, user_mail, user_address, user_date_of_birth, user_pseudo, user_password) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $request->execute(array($firstnane, $lastname, $mail, $address, $dob, $pseudo, $password));
   }
-
-  /* Mauvaise methode cookies
   // Verifie avec les cookies
-  public function sqlCheckIfSessionExists($mail, $password) {
+  public function sqlCheckIfSessionExists($mail, $password)
+  {
     $database = $this->connectionDatabase();
     $request = $database->prepare("SELECT user_mail, user_password FROM users WHERE user_mail = ? AND user_password = ?");
     $request->execute(array($mail, $password));
-    if ($request->rowCount() == 1) {  
+    if ($request->rowCount() == 1) {
       $_SESSION["connect"] = true;
     }
   }
-*/
 }

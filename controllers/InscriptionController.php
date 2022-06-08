@@ -31,10 +31,9 @@ function putInscription()
   }
 }
 
-/* Mauvaise methode cookies
-  // Requete qui verifie avec les cookies si l'utilisateur existe
-  function checkSession($mail, $password) {
-    $session = new PutInscription();
-    $sessions = $session->sqlCheckIfSessionExists($mail, $password);
-  }
-*/
+// Requete qui verifie avec les cookies si l'utilisateur existe
+function checkSession($mail, $password)
+{
+  $session = new PutInscription();
+  $sessions = $session->sqlCheckIfSessionExists($mail, $password);
+}

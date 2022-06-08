@@ -1,4 +1,7 @@
 <?php
+if ($_SESSION["admin"] == false) {
+    header("Location: index.php");
+}
 // Changement dynamique du header
 $title = "Crud Articles";
 $css = "crud.css";
@@ -14,10 +17,9 @@ ob_start();
         <tr>
             <th scope="col">article_id</th>
             <th scope="col">article_title</th>
-            <th scope="col">article_date</th>
             <th scope="col">article_author</th>
+            <th scope="col">article_date</th>
             <th scope="col">article_content</th>
-            <th scope="col">article_type</th>
             <th scope="col">Modif</th>
         </tr>
     </thead>
@@ -26,10 +28,9 @@ ob_start();
             <tr>
                 <td><?= $result["article_id"] ?></td>
                 <td><?= $result["article_title"] ?></td>
-                <td><?= $result["article_date"] ?></td>
                 <td><?= $result["article_author"] ?></td>
+                <td><?= $result["article_date"] ?></td>
                 <td><?= $result["article_content"] ?></td>
-                <td><?= $result["article_type"] ?></td>
                 <td><a href="?delete_article=<?= $result["article_id"] ?>"><button class="btn btn-danger">Supprimer</button></a></td>
             </tr>
         <?php } ?>

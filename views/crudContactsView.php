@@ -1,4 +1,7 @@
 <?php
+if ($_SESSION["admin"] == false) {
+    header("Location: index.php");
+}
 // Changement dynamique du header
 $title = "Crud Contacts";
 $css = "crud.css";
@@ -15,7 +18,6 @@ ob_start();
             <th scope="col">contact_id</th>
             <th scope="col">contact_first_name</th>
             <th scope="col">contact_last_name</th>
-            <th scope="col">contact_type</th>
             <th scope="col">contact_content</th>
             <th scope="col">Modif</th>
         </tr>
@@ -26,7 +28,6 @@ ob_start();
                 <td><?= $result["contact_id"] ?></td>
                 <td><?= $result["contact_first_name"] ?></td>
                 <td><?= $result["contact_last_name"] ?></td>
-                <td><?= $result["contact_type"] ?></td>
                 <td><?= $result["contact_content"] ?></td>
                 <td><a href="?delete_contact=<?= $result["contact_id"] ?>"><button class="btn btn-danger">Supprimer</button></a></td>
             </tr>

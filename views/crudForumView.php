@@ -1,4 +1,7 @@
 <?php
+if ($_SESSION["admin"] == false) {
+    header("Location: index.php");
+}
 // Changement dynamique du header
 $title = "Crud Forum";
 $css = "crud.css";
@@ -14,10 +17,9 @@ ob_start();
         <tr>
             <th scope="col">post_id</th>
             <th scope="col">post_title</th>
-            <th scope="col">post_date</th>
             <th scope="col">post_author</th>
+            <th scope="col">post_date</th>
             <th scope="col">post_content</th>
-            <th scope="col">post_type</th>
             <th scope="col">Modif</th>
         </tr>
     </thead>
@@ -26,10 +28,9 @@ ob_start();
             <tr>
                 <td><?= $result["post_id"] ?></td>
                 <td><?= $result["post_title"] ?></td>
-                <td><?= $result["post_date"] ?></td>
                 <td><?= $result["post_author"] ?></td>
+                <td><?= $result["post_date"] ?></td>
                 <td><?= $result["post_content"] ?></td>
-                <td><?= $result["post_type"] ?></td>
                 <td><a href="?delete_forum=<?= $result["post_id"] ?>"><button class="btn btn-danger">Supprimer</button></a></td>
             </tr>
         <?php } ?>
