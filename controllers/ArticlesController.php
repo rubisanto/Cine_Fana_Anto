@@ -18,3 +18,8 @@ function getSingleArticle($articleID)
   $articles = $article->sqlGetSingleArticle($articleID);
   require_once "views/singleArticleView.php";
 }
+
+// récupérer l'image à afficher 
+function getImage()
+{
+}
