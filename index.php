@@ -15,6 +15,7 @@ require_once "controllers/CatalogueController.php";
 require_once "controllers/MovieController.php";
 require_once "controllers/SearchController.php";
 require_once "controllers/CrudController.php";
+require_once "controllers/AddArticleController.php";
 
 // Verification cookie
 if (isset($_COOKIE["mail"]) && isset($_COOKIE["password"])) {
@@ -76,6 +77,10 @@ if (isset($_GET["page"])) {
     logout();
   } elseif ($_GET["page"] == "contact") {
     getContact();
+  } elseif (($_GET["page"] == "ajouter-article") && (!isset($_GET["statut"]))) {
+    formAddArticle();
+  } elseif ($_GET["page"] == "ajouter-article" && $_GET["statut"] == "validation") {
+    addArticle();
   } elseif ($_GET["page"] == "catalogue") {
     getCatalogue();
   } elseif ($_GET["page"] == "crud") {
@@ -84,9 +89,8 @@ if (isset($_GET["page"])) {
     header("Location: index.php");
   }
 } elseif (isset($_GET["table"])) {
-  if ($_GET["table"] == "admins") {
-    getAdminsTable();
-  } elseif ($_GET["table"] == "articles") {
+
+  if ($_GET["table"] == "articles") {
     getArticlesTable();
   } elseif ($_GET["table"] == "comments") {
     getCommentsTable();
@@ -94,8 +98,6 @@ if (isset($_GET["page"])) {
     getContactsTable();
   } elseif ($_GET["table"] == "forum") {
     getForumTable();
-  } elseif ($_GET["table"] == "products") {
-    getProductsTable();
   } elseif ($_GET["table"] == "users") {
     getUsersTable();
   } else {
@@ -115,8 +117,6 @@ if (isset($_GET["page"])) {
   if ($_GET["search"] == $search) {
     getSearch($search);
   }
-} elseif (isset($_GET["delete_admin"])) {
-  deleteAdminsTable($delete);
 } elseif (isset($_GET["delete_article"])) {
   deleteArticlesTable($delete);
 } elseif (isset($_GET["delete_comment"])) {
@@ -125,8 +125,6 @@ if (isset($_GET["page"])) {
   deleteContactsTable($delete);
 } elseif (isset($_GET["delete_forum"])) {
   deleteForumTable($delete);
-} elseif (isset($_GET["delete_product"])) {
-  deleteProductsTable($delete);
 } elseif (isset($_GET["delete_user"])) {
   deleteUsersTable($delete);
 } else {

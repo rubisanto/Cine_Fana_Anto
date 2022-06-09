@@ -9,7 +9,7 @@ class GetArticles extends Database
   public function sqlGetArticles()
   {
     $database = $this->connectionDatabase();
-    $request = $database->query("SELECT * FROM articles");
+    $request = $database->query("SELECT * FROM articles ORDER BY article_date DESC");
     return $request;
   }
   public function sqlGetSingleArticle($articleID)

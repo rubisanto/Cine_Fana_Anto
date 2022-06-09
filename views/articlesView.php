@@ -5,11 +5,10 @@ $css = "articles.css";
 // Stock le contenu en tampon
 ob_start();
 ?>
-
+<a href="?page=ajouter-article" class="btn btn-warning"> Ajouter un nouvel article </a>
 <?php while ($result = $articles->fetch()) { ?>
   <!-- Contenu html -->
   <div class="card flex-row mt-5 text-white border-0">
-    <img src="img/placeholder-articles.png" class="card-img mx-auto rounded-0 d-none d-sm-none d-md-none d-lg-block" style="height:auto; width:auto">
     <div class="card-body bg-dark">
       <h4 class="card-title"><?= $result["article_title"] ?></h4>
       <h5>Ecrit le <?= date("d-m-Y", strtotime($result["article_date"])) ?> par <?= $result["article_author"] ?></h5>
