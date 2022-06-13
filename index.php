@@ -16,6 +16,7 @@ require_once "controllers/MovieController.php";
 require_once "controllers/SearchController.php";
 require_once "controllers/CrudController.php";
 require_once "controllers/AddArticleController.php";
+require_once "controllers/AddPostController.php";
 
 // Verification cookie
 if (isset($_COOKIE["mail"]) && isset($_COOKIE["password"])) {
@@ -70,7 +71,7 @@ if (isset($_GET["page"])) {
   } elseif ($_GET["page"] == "forum") {
     getForum();
   } elseif ($_GET["page"] == "inscription") {
-    checkIfAlreadyExist();
+    operateInscription();
   } elseif ($_GET["page"] == "login") {
     checkLogin();
   } elseif ($_GET["page"] == "logout") {
@@ -81,6 +82,10 @@ if (isset($_GET["page"])) {
     formAddArticle();
   } elseif ($_GET["page"] == "ajouter-article" && $_GET["statut"] == "validation") {
     addArticle();
+  } elseif ($_GET["page"] == "ajouter-post" && (!isset($_GET["statut"]))) {
+    formAddPost();
+  } elseif ($_GET["page"] == "ajouter-post" && $_GET["statut"] == "validation") {
+    addPost();
   } elseif ($_GET["page"] == "catalogue") {
     getCatalogue();
   } elseif ($_GET["page"] == "crud") {

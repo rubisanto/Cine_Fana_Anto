@@ -3,6 +3,19 @@
 // Require l'acces au requetes lies a la table users
 require_once "models/PutInscription.php";
 
+
+// fonction générale pour orienter l'inscription
+function operateInscription()
+{
+  checkIfAlreadyExist();
+  if (checkIfAlreadyExist()) {
+    header("Location: index.php?page=login");
+  } else {
+    putInscription();
+  };
+}
+
+
 // Requete qui verifie si un utilisateur existe deja et affiche la vue
 function checkIfAlreadyExist()
 {

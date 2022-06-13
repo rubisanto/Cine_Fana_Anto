@@ -5,7 +5,11 @@ $css = "articles.css";
 // Stock le contenu en tampon
 ob_start();
 ?>
+
 <a href="?page=ajouter-article" class="btn btn-warning"> Ajouter un nouvel article </a>
+
+
+
 <?php while ($result = $articles->fetch()) { ?>
   <!-- Contenu html -->
   <div class="card flex-row mt-5 text-white border-0">
