@@ -35,7 +35,7 @@ ob_start();
                 <td><?= $result["user_first_name"] ?></td>
                 <td><?= $result["user_last_name"] ?></td>
                 <td><?= $result["user_mail"] ?></td>
-                <td><?= $result["user_address"] ?></td>
+                <td><?= $result["user_adress"] ?></td>
                 <td><?= $result["user_date_of_birth"] ?></td>
                 <td><?= $result["user_pseudo"] ?></td>
                 <td><?= $result["user_password"] ?></td>

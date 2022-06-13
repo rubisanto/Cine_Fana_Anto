@@ -6,7 +6,7 @@ $css = "signup.css";
 ob_start();
 ?>
 <!-- Contenu html -->
-<form action="" method="POST" class="mt-5">
+<form action="?page=inscription&statut=validation" method="POST" class="mt-5">
   <div class="form-group">
     <label for="firstname">Prenom</label>
     <input type="text" class="form-control" name="firstname" id="firstname" required>
@@ -20,8 +20,8 @@ ob_start();
     <input type="email" class="form-control" name="mail" id="mail" required>
   </div>
   <div class="form-group">
-    <label for="address">Adresse</label>
-    <input type="text" class="form-control" name="address" id="address" required>
+    <label for="adress">Adresse</label>
+    <input type="text" class="form-control" name="adress" id="adress" required>
   </div>
   <div class="form-group">
     <label for="dob">Date de naissance</label>

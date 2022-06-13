@@ -22,7 +22,7 @@ require_once "controllers/AddPostController.php";
 if (isset($_COOKIE["mail"]) && isset($_COOKIE["password"])) {
   $mail = htmlspecialchars($_COOKIE["mail"]);
   $password = htmlspecialchars($_COOKIE["password"]);
-  checkSession($mail, $password);
+  // checkSession($mail, $password);
 }
 
 // Verification url du routeur
@@ -70,7 +70,9 @@ if (isset($_GET["page"])) {
     getCgu();
   } elseif ($_GET["page"] == "forum") {
     getForum();
-  } elseif ($_GET["page"] == "inscription") {
+  } elseif (($_GET["page"] == "inscription") && (!isset($_GET["statut"]))) {
+    formInscription();
+  } elseif ($_GET["page"] == "inscription" && $_GET["statut"] == "validation") {
     operateInscription();
   } elseif ($_GET["page"] == "login") {
     checkLogin();

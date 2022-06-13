@@ -17,20 +17,20 @@ class PutInscription extends Database
       echo "Compte deja existant";
     }
   }
-  public function sqlPutInscription($firstnane, $lastname, $mail, $address, $dob, $pseudo, $password)
+  public function sqlPutInscription($firstnane, $lastname, $mail, $adress, $dob, $pseudo, $password)
   {
     $database = $this->connectionDatabase();
-    $request = $database->prepare("INSERT INTO users (user_first_name, user_last_name, user_mail, user_address, user_date_of_birth, user_pseudo, user_password) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $request->execute(array($firstnane, $lastname, $mail, $address, $dob, $pseudo, $password));
+    $request = $database->prepare("INSERT INTO users (user_first_name, user_last_name, user_mail, user_adress, user_date_of_birth, user_pseudo, user_password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $request->execute(array($firstnane, $lastname, $mail, $adress, $dob, $pseudo, $password));
   }
   // Verifie avec les cookies
-  public function sqlCheckIfSessionExists($mail, $password)
-  {
-    $database = $this->connectionDatabase();
-    $request = $database->prepare("SELECT user_mail, user_password FROM users WHERE user_mail = ? AND user_password = ?");
-    $request->execute(array($mail, $password));
-    if ($request->rowCount() == 1) {
-      $_SESSION["connect"] = true;
-    }
-  }
+  // public function sqlCheckIfSessionExists($mail, $password)
+  // {
+  //   $database = $this->connectionDatabase();
+  //   $request = $database->prepare("SELECT user_mail, user_password FROM users WHERE user_mail = ? AND user_password = ?");
+  //   $request->execute(array($mail, $password));
+  //   if ($request->rowCount() == 1) {
+  //     $_SESSION["connect"] = true;
+  //   }
+  // }
 }
