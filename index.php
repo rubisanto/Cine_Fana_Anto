@@ -74,7 +74,9 @@ if (isset($_GET["page"])) {
     formInscription();
   } elseif ($_GET["page"] == "inscription" && $_GET["statut"] == "validation") {
     operateInscription();
-  } elseif ($_GET["page"] == "login") {
+  } elseif ($_GET["page"] == "login"  && (!isset($_GET["statut"]))) {
+    formLogin();
+  } elseif ($_GET["page"] == "login"  && $_GET["statut"] == "validation") {
     checkLogin();
   } elseif ($_GET["page"] == "logout") {
     logout();

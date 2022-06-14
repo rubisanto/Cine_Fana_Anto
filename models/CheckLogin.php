@@ -12,10 +12,10 @@ class CheckLogin extends Database
     $request = $database->prepare("SELECT user_role, user_mail, user_password FROM users WHERE user_mail = ?");
     $request->execute(array($mail));
     if ($request->rowCount() == 0) {
-      echo "Compte non existant";
+      return "";
     } else {
       $result = $request->fetch();
-      createSession($result);
+      return $result;
     }
   }
 }

@@ -3,15 +3,28 @@
 // Require l'acces au requetes lies a la table users
 require "models/CheckLogin.php";
 
+
+// afficher le formulaire 
+function formLogin()
+{
+  require_once "views/loginView.php";
+}
+
+
+
+
 // Verifie si l'utilisateur existe deja
 function checkLogin()
 {
-  if (isset($_POST["mail"]) && isset($_POST["password"])) {
-    $mail = htmlspecialchars($_POST["mail"]);
-    $connection = new CheckLogin();
-    $connections = $connection->sqlCheckLogin($mail);
+
+  $mail = htmlspecialchars($_POST["mail"]);
+  $connection = new CheckLogin();
+  $userDatas = $connection->sqlCheckLogin($mail);
+  if (is_string($userDatas)) {
+    header('Location: index.php?page=login&error=1');
+  } else {
+    createSession($userDatas);
   }
-  require_once "views/loginView.php";
 }
 
 // Stock les donnees de la session
@@ -27,7 +40,7 @@ function createSession($result)
       }
       header("Location: index.php");
     } else {
-      echo "Mot de passe erroné";
+      header('Location: index.php?page=login&error=2');
     }
   }
 }
