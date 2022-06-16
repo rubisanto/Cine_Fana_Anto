@@ -38,11 +38,7 @@ CREATE TABLE `articles` (
   `user_id_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `comments`
---
 
 CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
@@ -53,11 +49,6 @@ CREATE TABLE `comments` (
   `post_id_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `forum`
---
 
 CREATE TABLE `forum` (
   `post_id` int(11) NOT NULL,
@@ -70,11 +61,6 @@ CREATE TABLE `forum` (
   `user_id_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
@@ -86,58 +72,34 @@ CREATE TABLE `user` (
   `user_last_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `articles`
---
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`article_id`),
   ADD KEY `user_id_fk` (`user_id_fk`);
 
---
--- Indexes for table `comments`
---
+
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`),
   ADD KEY `user_id_fk` (`user_id_fk`),
   ADD KEY `post_id_fk` (`post_id_fk`);
 
---
--- Indexes for table `forum`
---
+
 ALTER TABLE `forum`
   ADD PRIMARY KEY (`post_id`),
   ADD KEY `user_id_fk` (`user_id_fk`);
 
---
--- Indexes for table `user`
---
+
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
---
--- Constraints for dumped tables
---
 
---
--- Constraints for table `articles`
---
 ALTER TABLE `articles`
   ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`user_id_fk`) REFERENCES `user` (`user_id`);
 
---
--- Constraints for table `comments`
---
+
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`user_id_fk`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`post_id_fk`) REFERENCES `forum` (`post_id`);
 
---
--- Constraints for table `forum`
---
 ALTER TABLE `forum`
   ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`user_id_fk`) REFERENCES `user` (`user_id`);
 COMMIT;
