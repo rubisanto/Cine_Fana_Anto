@@ -17,6 +17,7 @@ require_once "controllers/SearchController.php";
 require_once "controllers/CrudController.php";
 require_once "controllers/AddArticleController.php";
 require_once "controllers/AddPostController.php";
+require_once "controllers/CommentController.php";
 
 // Verification cookie
 if (isset($_COOKIE["mail"]) && isset($_COOKIE["password"])) {
@@ -80,6 +81,10 @@ if (isset($_GET["page"])) {
     checkLogin();
   } elseif ($_GET["page"] == "logout") {
     logout();
+  } elseif (($_GET["page"] == "ajouter-commentaire") && (!isset($_GET["statut"]))) {
+    formComment();
+  } elseif ($_GET["page"] == "ajouter-commentaire" && $_GET["statut"] == "validation") {
+    postComment();
   } elseif ($_GET["page"] == "contact") {
     getContact();
   } elseif (($_GET["page"] == "ajouter-article") && (!isset($_GET["statut"]))) {

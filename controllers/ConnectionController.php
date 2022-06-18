@@ -32,7 +32,21 @@ function createSession($result)
 {
   if (isset($_POST["mail"]) && isset($_POST["password"])) {
     $password = htmlspecialchars($_POST["password"]);
+
     if (password_verify($password, $result["user_password"])) {
+      $mail = $_POST["mail"];
+
+
+      // récupérer dans la session l'id
+      $connection = new CheckLogin();
+      $_SESSION["user_id"] = $connection->sqlGetId($mail);
+
+
+      // Récupérer dans la session le pseudo
+      $_SESSION["user_pseudo"] = $connection->sqlGetPseudo($mail);
+
+      // Mettre le statut admin
+
       if ($result["user_role"] == "admin") {
         $_SESSION["admin"] = true;
       } else {
