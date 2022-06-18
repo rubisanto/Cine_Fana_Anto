@@ -19,5 +19,8 @@ function getSinglePost($postID)
 {
   $post = new getForum();
   $posts = $post->sqlGetSinglePost($postID);
+  // récupérer les commentaires
+  $comment = new GetForum();
+  $comments = $comment->sqlGetComments($postID);
   require_once "views/singlePostView.php";
 }

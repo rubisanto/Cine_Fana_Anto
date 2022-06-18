@@ -20,7 +20,16 @@ $_SESSION['post_id'] = $_GET['post'];
 
 <!-- afficher les commentaires déjà existants -->
 
+<?php while ($result = $comments->fetch()) { ?>
+      <div class="card flex-row mt-5 text-white border-0">
+            <div class="card-body bg-dark">
 
+                  <h5>Ecrit le <?= date("d-m-Y", strtotime($result["comment_date"])) ?> par <?= $result["comment_author"] ?></h5>
+                  <p class="card-text"><?= substr($result["comment_content"], 0, 250) . "..." ?></p>
+
+            </div>
+      </div>
+<?php } ?>
 
 <!-- Fin contenu html -->
 <?php
