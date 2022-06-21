@@ -86,7 +86,7 @@ if (isset($_SESSION["connect"]) == true) {
       </div>
     </nav>
   </header>
-  <main class="container main bg-light">
+  <main class="container main bg-light ">
     <!-- Affiche le contenu du tempon -->
     <?= $content ?>
   </main>

@@ -97,7 +97,7 @@ if (isset($_GET["page"])) {
     addPost();
   } elseif ($_GET["page"] == "catalogue") {
     getCatalogue();
-  } elseif ($_GET["page"] == "crud") {
+  } elseif ($_GET["page"] == "crud" && $_SESSION["admin"] == true) {
     getCrud();
   } else {
     header("Location: index.php");
