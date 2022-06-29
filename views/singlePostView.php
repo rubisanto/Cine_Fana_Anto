@@ -24,9 +24,10 @@ $_SESSION['post_id'] = $_GET['post'];
       <div class="card flex-row mt-5 text-white border-0">
             <div class="card-body bg-dark">
 
-                  <h5>Ecrit le <?= date("d-m-Y", strtotime($result["comment_date"])) ?> par <?= $result["comment_author"] ?> avec <? $result[""] ?> likes </h5>
+                  <h5>Ecrit le <?= date("d-m-Y", strtotime($result["comment_date"])) ?> par <?= $result['comment_author'] ?> avec <?= $result['comment_likes'] ?> likes </h5>
                   <p class="card-text"><?= $result["comment_content"]  ?></p>
-                  <a href="?liked=<? $result["comment_id"] ?>" class="btn btn-warning"> Liker le post</a>
+                  <a href="?liked=<?= $result['comment_id'] ?>" class="btn btn-warning"> Liker le commentaire </a>
+
 
 
             </div>

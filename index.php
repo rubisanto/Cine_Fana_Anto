@@ -33,6 +33,9 @@ if (isset($_GET["article"])) {
 if (isset($_GET["post"])) {
   $postID = htmlspecialchars($_GET["post"]);
 }
+if (isset($_GET["liked"])) {
+  $commentId = htmlspecialchars($_GET["liked"]);
+}
 if (isset($_GET["search"])) {
   $search = htmlspecialchars($_GET["search"]);
 }
@@ -124,6 +127,10 @@ if (isset($_GET["page"])) {
 } elseif (isset($_GET["post"])) {
   if ($_GET["post"] == $postID) {
     getSinglePost($postID);
+  }
+} elseif (isset($_GET["liked"])) {
+  if ($_GET["liked"] == $commentId) {
+    addLike($commentId);
   }
 } elseif (isset($_GET["movie"])) {
   getSingleMovie();
