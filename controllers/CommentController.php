@@ -41,13 +41,22 @@ function addLike($commentId)
     $userId = $_SESSION["user_id"];
     // récupérer le nombre de like 
     $numberLike = new AddLike;
-    $numberLike->sqlNumberLike($commentId);
-    // ajouter 1 dans la table comment
-    $addLikeComment = new AddLike;
-    //calcul pour ajouter 1 
-    $numberLikes = "";
-    $addLikeComment->sqlNumberLikeAdd($numberLikes);
+    $numberLikes = $numberLike->sqlNumberLike($commentId);
+
+
+
+    //ajouter un au nombre de likes récupéré
+    $finalNumberLikes = $numberLikes + 1;
+
+    // mettre le nouveau nombre de likes en BDD
+    $insertNumber = new AddLike;
+    $insertNumbers = $insertNumber->sqlNumberLikeAdd($finalNumberLikes, $commentId);
+
+    // inscrire un nouveau like avec les différents paramètres
+    $putLike = new AddLike;
+    $putLikes = $putLike->sqlAddLike($userId, $commentId);
+
 
     // rediriger vers le post où le commentaire a été liké 
-    header('Location: index.php?post="' . $_SESSION['post_id']);
+    header('Location: index.php?page=forum');
 }

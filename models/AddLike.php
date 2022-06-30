@@ -6,20 +6,29 @@ require_once "Database.php";
 // Class qui permet d'ajouter un article
 class AddLike extends Database
 {
+    // récupérer le nombre de like grâce à la tablede liaisons
     public function sqlNumberLike($commentId)
     {
         $database = $this->connectionDatabase();
 
-        $request = $database->prepare("SELECT * FROM likes WHERE comment_id_fk = ?");
+        // compter le nombre de lignes
+        $request = $database->prepare("SELECT COUNT(*) FROM likes WHERE comment_id_fk = ? ");
         $request->execute(array($commentId));
-        return $request;
+
+        // on ne peut pas utiliser row count 
+        $nbLikes = $request->fetchColumn();
+
+        // retourne le nombre de colonne correspondant au comment id 
+        return $nbLikes;
     }
 
-    public function sqlNumberLikeAdd($numberLikes)
+
+    public function sqlNumberLikeAdd($finalNumberLikes, $commentId)
     {
         $database = $this->connectionDatabase();
-        $request = $database->prepare("INSERT INTO comments (comment_likes) VALUES (?)");
-        $request->execute(array($numberLikes));
+        $request = $database->prepare("UPDATE comments SET comment_likes = ? WHERE comment_id = ?");
+
+        $request->execute(array($finalNumberLikes, $commentId));
     }
 
     public function sqlAddLike($userId, $commentId)
